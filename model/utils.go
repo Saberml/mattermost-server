@@ -376,6 +376,7 @@ var reservedName = []string{
 	"oauth",
 	"error",
 	"help",
+	"plugins",
 }
 
 func IsValidChannelIdentifier(s string) bool {
@@ -637,4 +638,12 @@ func GetPreferredTimezone(timezone StringMap) string {
 // IsSamlFile checks if filename is a SAML file.
 func IsSamlFile(saml *SamlSettings, filename string) bool {
 	return filename == *saml.PublicCertificateFile || filename == *saml.PrivateKeyFile || filename == *saml.IdpCertificateFile
+}
+
+func AsStringBoolMap(list []string) map[string]bool {
+	listMap := map[string]bool{}
+	for _, p := range list {
+		listMap[p] = true
+	}
+	return listMap
 }
